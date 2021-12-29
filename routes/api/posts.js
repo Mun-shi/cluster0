@@ -4,6 +4,6 @@ const express = require('express');
  // @route   GET api/posts
  // @desk    test route
  // @access  public
- router.get('/',(req,res) => res.send('posts route'));
+ router.get('/',(req, res) => res.send('posts route'));
 
  module.exports = router;
