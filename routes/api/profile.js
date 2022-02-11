@@ -1,16 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const auth = require('../../routes/api/middleware/auth'); 
+const auth = require('../../routes/api/middleware/auth');
+const { check, validationResult } = require('express-validator'); 
 
-const profile = require('../../routes/api/models/profile');
+const Profile = require('./models/Profile');
 const User = require('../../routes/api/models/User');
 
 // @route   GET api/profile/me
 // @desk    get current users profile
 // @access  private
-router.get('/me', auth, async (req,res) => {
+router.get('/me', auth, async (req, res) => {
     try {
-      const profile = await profile.findone({user: req.user.id}).populate(
+      const profile = await Profile.findOne({user: req.user.id}).populate(
           'user',
           ['name','avatar']
       );
@@ -23,5 +24,21 @@ router.get('/me', auth, async (req,res) => {
       res.status(500).send('server error');  
     }
 });
+
+// @route   POST api/profile
+// @desk    Create or update users profile
+// @access  private
+router.post(
+  '/',
+  [
+    auth,
+   [
+    check('status', 'status is required')
+    .not()
+    .isEmpty()
+   ]
+],
+(req, res) =>{}
+);
 
 module.exports = router;  
