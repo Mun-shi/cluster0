@@ -100,10 +100,24 @@ router.post(
         res.json(profile); 
     } catch (err) {
       console.error(err.message);
-      res.status(500).send('Server error');
+      res.status(500).send('Server error'); 
     }
     
  }
 );
+
+// @route   GET api/profile
+// @desk    get all profiles 
+// @access  public
+router.get('/', async (req, res) => {
+ try {
+   const profiles = await Profile.find().populate('user', ['name','avatar']);
+   res.json(profiles);
+ } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+ }
+
+})
 
 module.exports = router;  
