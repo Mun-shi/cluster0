@@ -1,5 +1,7 @@
 {
     "mongoURI":"mongodb+srv://gamma:95676339@cluster0.ezuvd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
-    "jwtSecret":"mysecrettoken"
+    "jwtSecret":"mysecrettoken",
+    "githubClientId":"db0450e51ad9a1504c27",
+    "githubSecret":"3fa97902e13481ff4bf63f30d49c4a56ae746787"
 }    
  
